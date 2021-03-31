@@ -1,22 +1,22 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import Login from "./Login";
 import SignUp from "./SignUp";
 import Admin from "./Admin";
 import User from "./User";
 
-function Routes() {
+function Routes({ auth, setAuth, setToken }) {
   return (
     <Switch>
       <Route exact path="/">
-        <Login />
+        <Redirect to="/login" />
       </Route>
       <Route exact path="/signup">
-        <SignUp />
+        <SignUp auth={auth} setAuth={setAuth} setToken={setToken} />
       </Route>
       <Route exact path="/login">
-        <Login />
+        <Login auth={auth} setAuth={setAuth} setToken={setToken} />
       </Route>
       <Route exact path="/admin">
         <Admin />
@@ -24,6 +24,7 @@ function Routes() {
       <Route exact path="/users/:id">
         <User />
       </Route>
+      <Redirect to="/" />
     </Switch>
   );
 }

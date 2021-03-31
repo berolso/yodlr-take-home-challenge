@@ -13,8 +13,6 @@ const request = async (endpoint, data = {}, method = "get") => {
     return (await axios({ url, method, data, params, headers })).data;
   } catch (err) {
     console.error("API Error:", err.response);
-    let message = err.response.data.error.message;
-    console.log(message);
   }
 };
 
@@ -33,11 +31,12 @@ const addUser = async (data) =>{
   return res
 }
 
-const loginUser = async (username,password) => {
-  const res = await request(`auth/token`,{username,password}, 'post');
-  console.log(res)
+const loginUser = async (email,password) => {
+  const res = await request(`token`,{email,password}, 'post');
+  console.log('api helper loginUser',res)
   res.token = '1234'
-  return res.token
+  console.log(res);
+  return token
 }
 
 export { getUsers, getUser, addUser, loginUser};

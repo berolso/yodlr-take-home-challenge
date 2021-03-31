@@ -29,9 +29,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavBar = () => {
+const NavBar = ({auth,setAuth}) => {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+  // const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -66,7 +66,7 @@ const NavBar = () => {
           <Typography
             variant="h6"
             className={classes.title}
-            component={NavLink}
+            // component={NavLink}
             to="/"
           >
             Yodlr

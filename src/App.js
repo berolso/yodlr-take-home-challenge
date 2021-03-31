@@ -13,6 +13,7 @@ import { getUser } from "./api/api";
 function App() {
   const [currentuser, setCurrentuser] = useState(null);
   const [token, setToken] = useLocalStorage("userToken");
+  const [auth, setAuth] = React.useState(false);
 
   useEffect(()=>{
     const getUserFromAPI = async () =>{
@@ -32,8 +33,8 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />
-        <Routes setToken={setToken}/>
+        <NavBar auth={auth} setAuth={setAuth} />
+        <Routes auth={auth} setAuth={setAuth} setToken={setToken}/>
       </BrowserRouter>
     </div>
   );
